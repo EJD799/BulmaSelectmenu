@@ -52,6 +52,9 @@ function populateMenu(el) {
                 option.innerHTML = item.innerHTML;
                 card.appendChild(option);
             } else if (item.tagName == "OPTGROUP") {
+                if (i > 0) {
+                    card.appendChild(document.createElement("br"));
+                }
                 let title = document.createElement("span");
                 title.setAttribute("class", "title is-6");
                 title.innerHTML = item.getAttribute("label");

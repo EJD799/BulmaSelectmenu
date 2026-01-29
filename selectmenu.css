@@ -1,9 +1,17 @@
 .selectmenu_menu {
     width: max-content;
-    padding: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     text-align: left;
     position: absolute;
 }
+.selectmenu_menu span {
+    padding-left: 16px;
+    padding-right: 16px;
+}
 .selectmenu_item {
-
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
