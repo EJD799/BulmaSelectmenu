@@ -1,6 +1,9 @@
 .selectmenu_menu {
     width: max-content;
+    padding: 16px;
+    text-align: left;
+    position: absolute;
 }
 .selectmenu_item {
-    
+
 }

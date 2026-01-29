@@ -1,6 +1,7 @@
 function openSelectmenu(el) {
     alert("clicked");
-    populateMenu(el);
+    let card = populateMenu(el);
+    positionMenu(card, el);
 }
 
 function attachSelectmenu(el) {
@@ -10,6 +11,14 @@ function attachSelectmenu(el) {
     el.addEventListener("click", function(e) {
         openSelectmenu(el);
     });
+}
+
+function positionMenu(menu, button) {
+  const rect = button.getBoundingClientRect();
+
+  menu.style.position = "absolute";
+  menu.style.left = `${rect.left + window.scrollX}px`;
+  menu.style.top  = `${rect.bottom + window.scrollY}px`;
 }
 
 function populateMenu(el) {
@@ -38,7 +47,7 @@ function populateMenu(el) {
                 option.innerHTML = item.innerHTML;
                 card.appendChild(option);
             } else if (item.tagName == "OPTGROUP") {
-                let title = document.createElement("h6");
+                let title = document.createElement("span");
                 title.setAttribute("class", "title is-6");
                 title.innerHTML = item.getAttribute("label");
                 card.appendChild(title);
@@ -65,9 +74,21 @@ function populateMenu(el) {
         }
 
         document.body.appendChild(card);
+        return card;
     } else {
         console.warn("[Bulma Selectmenu] The select element does not have an ID. IDs are required for Bulma Selectmenu to work.");
     }
 }
+
+function closeAllSelectmenus() {
+  document.querySelectorAll(".selectmenu_menu").forEach(m => m.remove());
+}
+
+document.addEventListener("mousedown", (e) => {
+  if (!e.target.closest(".selectmenu_menu") &&
+      !e.target.closest(".selectmenu_button")) {
+    closeAllSelectmenus();
+  }
+});
 
 attachSelectmenu(menu);
