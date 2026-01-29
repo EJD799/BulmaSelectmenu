@@ -4,6 +4,9 @@
     padding-bottom: 16px;
     text-align: left;
     position: absolute;
+    min-width: 180px;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 .selectmenu_menu span {
@@ -11,88 +14,81 @@
     padding-right: 16px;
 }
 
-/* Base selectmenu item — matches Bulma dropdown-item */
+/* Base selectmenu item — fully Bulma-compatible */
 .selectmenu_item {
-  padding: 6px 16px;
-  white-space: nowrap;
-  width: 100%;
+    padding: 6px 16px;
+    white-space: nowrap;
+    width: 100%;
 
-  /* Bulma dropdown variables */
-  --bulma-dropdown-item-background-l-delta: 0%;
-  --bulma-dropdown-item-border-l-delta: 0%;
+    /* Bulma dropdown variables (MISSING before) */
+    --bulma-dropdown-item-h: var(--bulma-scheme-h);
+    --bulma-dropdown-item-s: var(--bulma-scheme-s);
+    --bulma-dropdown-item-background-l: var(--bulma-scheme-main-l);
+    --bulma-dropdown-item-background-l-delta: 0%;
+    --bulma-dropdown-item-border-l-delta: 0%;
+    --bulma-dropdown-item-hover-background-l-delta: -5%;
+    --bulma-dropdown-item-active-background-l-delta: -10%;
 
-  background-color: hsl(
-    var(--bulma-dropdown-item-h),
-    var(--bulma-dropdown-item-s),
-    calc(
-      var(--bulma-dropdown-item-background-l)
-      + var(--bulma-dropdown-item-background-l-delta)
-    )
-  );
+    background-color: hsl(
+        var(--bulma-dropdown-item-h),
+        var(--bulma-dropdown-item-s),
+        calc(
+            var(--bulma-dropdown-item-background-l)
+            + var(--bulma-dropdown-item-background-l-delta)
+        )
+    );
 
-  transition:
-    background-color var(--bulma-duration) var(--bulma-easing),
-    color var(--bulma-duration) var(--bulma-easing);
+    transition: background-color var(--bulma-duration) var(--bulma-easing);
 }
 
 .selectmenu_item:not(.selectmenu_item_disabled) {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-/* ----------------------------- */
-/* Non-selected (Bulma default)  */
-/* ----------------------------- */
-
+/* Non-selected hover — NOW WORKS */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):hover {
-  --bulma-dropdown-item-background-l-delta:
-    var(--bulma-dropdown-item-hover-background-l-delta);
+    --bulma-dropdown-item-background-l-delta:
+        var(--bulma-dropdown-item-hover-background-l-delta);
 }
 
+/* Non-selected active — NOW WORKS */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):active,
 .selectmenu_item.is-active:not(.selectmenu_item_selected):not(.selectmenu_item_disabled) {
-  --bulma-dropdown-item-background-l-delta:
-    var(--bulma-dropdown-item-active-background-l-delta);
+    --bulma-dropdown-item-background-l-delta:
+        var(--bulma-dropdown-item-active-background-l-delta);
 }
 
-/* ----------------------------- */
-/* Selected item (link-tinted)   */
-/* ----------------------------- */
-
+/* Selected base — subtle tint */
 .selectmenu_item_selected {
-  color: var(--bulma-link);
-
-  /* Base (idle) tint */
-  background-color: color-mix(
-    in srgb,
-    var(--bulma-link) 8%,
-    transparent
-  );
+    color: var(--bulma-link);
+    background-color: color-mix(
+        in srgb,
+        var(--bulma-link) 8%,
+        transparent
+    );
 }
 
 /* Selected hover */
 .selectmenu_item_selected:not(.selectmenu_item_disabled):hover {
-  background-color: color-mix(
-    in srgb,
-    var(--bulma-link) 13%,
-    transparent
-  );
+    background-color: color-mix(
+        in srgb,
+        var(--bulma-link) 13%,
+        transparent
+    );
 }
 
 /* Selected active */
 .selectmenu_item_selected:not(.selectmenu_item_disabled):active,
 .selectmenu_item_selected.is-active:not(.selectmenu_item_disabled) {
-  background-color: color-mix(
-    in srgb,
-    var(--bulma-link) 23%,
-    transparent
-  );
+    background-color: color-mix(
+        in srgb,
+        var(--bulma-link) 23%,
+        transparent
+    );
 }
 
-/* ----------------------------- */
-/* Disabled                      */
-/* ----------------------------- */
-
+/* Disabled */
 .selectmenu_item_disabled {
-  opacity: 0.5;
-  cursor: default;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
