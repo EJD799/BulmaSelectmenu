@@ -1,16 +1,21 @@
 function openSelectmenu(el) {
-    alert("clicked");
     let card = populateMenu(el);
     positionMenu(card, el);
 }
 
 function attachSelectmenu(el) {
-    el.addEventListener("mousedown", function(e) {
-        e.preventDefault();
-    });
-    el.addEventListener("click", function(e) {
-        openSelectmenu(el);
-    });
+  el.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    e.stopPropagation(); // ← CRITICAL
+
+    const existing = document.getElementById(`${el.id}_menuCard`);
+
+    if (existing) {
+      existing.remove(); // toggle off
+    } else {
+      openSelectmenu(el); // toggle on
+    }
+  });
 }
 
 function positionMenu(menu, button) {
@@ -72,6 +77,10 @@ function populateMenu(el) {
                 }
             }
         }
+
+        card.addEventListener("mousedown", e => {
+            e.stopPropagation();
+        });
 
         document.body.appendChild(card);
         return card;
