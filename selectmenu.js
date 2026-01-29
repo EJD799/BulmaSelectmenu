@@ -1,5 +1,6 @@
 function openSelectmenu(el) {
     alert("clicked");
+    populateMenu(el);
 }
 
 function attachSelectmenu(el) {
@@ -62,7 +63,8 @@ function populateMenu(el) {
                 }
             }
         }
-        return card;
+
+        document.body.appendChild(card);
     } else {
         console.warn("[Bulma Selectmenu] The select element does not have an ID. IDs are required for Bulma Selectmenu to work.");
     }
