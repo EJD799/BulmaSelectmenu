@@ -11,74 +11,73 @@
     padding-right: 16px;
 }
 
-/* === Base item (matches Bulma dropdown-item) === */
+/* Base selectmenu item — matches Bulma dropdown-item */
 .selectmenu_item {
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 6px 16px;
+    white-space: nowrap;
+    width: 100%;
+
+    --bulma-dropdown-item-background-l-delta: 0%;
+    --bulma-dropdown-item-border-l-delta: 0%;
 
     background-color: hsl(
         var(--bulma-dropdown-item-h),
         var(--bulma-dropdown-item-s),
         calc(
-            var(--bulma-dropdown-item-background-l)
-            + var(--bulma-dropdown-item-background-l-delta)
+        var(--bulma-dropdown-item-background-l)
+        + var(--bulma-dropdown-item-background-l-delta)
         )
     );
-
-    --bulma-dropdown-item-background-l-delta: 0%;
-    --bulma-dropdown-item-border-l-delta: 0%;
-
-    transition: var(--bulma-duration);
 }
 
 .selectmenu_item:not(.selectmenu_item_disabled) {
     cursor: pointer;
 }
 
-/* === Hover (Bulma default) === */
+/* Non-selected hover (Bulma default) */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):hover {
     --bulma-dropdown-item-background-l-delta:
         var(--bulma-dropdown-item-hover-background-l-delta);
+    --bulma-dropdown-item-border-l-delta:
+        var(--bulma-dropdown-item-hover-border-l-delta);
 }
 
-/* === Active / pressed (Bulma default) === */
+/* Non-selected active (Bulma default) */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):active,
 .selectmenu_item.is-active:not(.selectmenu_item_selected):not(.selectmenu_item_disabled) {
     --bulma-dropdown-item-background-l-delta:
         var(--bulma-dropdown-item-active-background-l-delta);
+    --bulma-dropdown-item-border-l-delta:
+        var(--bulma-dropdown-item-active-border-l-delta);
 }
 
-/* === Selected item (link-tinted) === */
+/* Selected item base */
 .selectmenu_item_selected {
     color: var(--bulma-link);
-
-    background-color: hsl(
-        var(--bulma-link-h),
-        var(--bulma-link-s),
-        calc(
-            var(--bulma-link-l)
-            + var(--bulma-dropdown-item-background-l-delta)
-        )
-    );
-
-    --bulma-dropdown-item-background-l-delta: 12%;
 }
 
-/* === Selected + hover === */
+/* Selected hover (light link tint) */
 .selectmenu_item_selected:not(.selectmenu_item_disabled):hover {
-    --bulma-dropdown-item-background-l-delta: 18%;
+    background-color: color-mix(
+        in srgb,
+        var(--bulma-link) 13%,
+        transparent
+    );
 }
 
-/* === Selected + active === */
+/* Selected active (stronger link tint) */
 .selectmenu_item_selected:not(.selectmenu_item_disabled):active,
 .selectmenu_item_selected.is-active:not(.selectmenu_item_disabled) {
-    --bulma-dropdown-item-background-l-delta: 8%;
+    background-color: color-mix(
+        in srgb,
+        var(--bulma-link) 23%,
+        transparent
+    );
+    color: var(--bulma-link);
 }
 
-/* === Disabled === */
+/* Disabled */
 .selectmenu_item_disabled {
-    color: var(--bulma-text-weak);
+    opacity: 0.5;
     cursor: not-allowed;
 }
