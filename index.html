@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+<link rel="stylesheet" href="https://ejd799.github.io/BulmaColoredInputs/main.css">
+<link rel="stylesheet" href="selectmenu.css">
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+<h1 class="title is-1">Bulma Selectmenu</h1>
+<div class="select">
+    <select id="menu">
+        <optgroup label="Section A">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </optgroup>
+        <optgroup label="Section B">
+            <option value="option4">Option 4</option>
+            <option value="option5">Option 5</option>
+            <option value="option6">Option 6</option>
+        </optgroup>
+    </select>
+</div>
+<br><br>
+<button onclick="alert('Selected value: ' + menu.value)" class="button is-primary">Submit</button>
+
+<script src="selectmenu.js"></script>
