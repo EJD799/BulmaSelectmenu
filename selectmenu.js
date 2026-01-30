@@ -1,4 +1,4 @@
-// Bulma Selectmenu v1.0.0
+// Bulma Selectmenu v1.0.3
 // Made by EJD799
 
 let bulmaSelectmenu = {
@@ -102,6 +102,11 @@ let bulmaSelectmenu = {
 
     selectOption: function(menu, selection) {
         menu.value = selection;
+
+        menu.dispatchEvent(new Event("change", {
+            bubbles: true
+        }));
+        
         bulmaSelectmenu.closeAllMenus();
     }
 }
