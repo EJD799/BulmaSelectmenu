@@ -1,9 +1,9 @@
-/* Bulma Selectmenu v1.0.0 */
+/* Bulma Selectmenu v1.0.3 */
 /* Made by EJD799          */
 
 .selectmenu_menu {
     width: max-content;
-    padding-top: 16px;
+    padding-top: 12px;
     padding-bottom: 10px;
     text-align: left;
     position: absolute;
