@@ -7,7 +7,7 @@ function openSelectmenu(el) {
     positionMenu(card, el);
 }
 
-/*function attachSelectmenu(el) {
+function attachSelectmenu(el) {
   el.addEventListener("mousedown", function (e) {
     e.preventDefault();
     e.stopPropagation(); // ← CRITICAL
@@ -20,24 +20,7 @@ function openSelectmenu(el) {
       openSelectmenu(el); // toggle on
     }
   });
-}*/
-
-document.addEventListener("mousedown", function (e) {
-    const button = e.target.closest(".selectmenu_button");
-    if (!button) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    const existing = document.getElementById(`${button.id}_menuCard`);
-
-    if (existing) {
-        closeAllSelectmenus();
-    } else {
-        closeAllSelectmenus(); // close others first (optional but nice)
-        openSelectmenu(button);
-    }
-});
+}
 
 
 function positionMenu(menu, button) {
@@ -131,4 +114,4 @@ function selectOption(menu, selection) {
     closeAllSelectmenus();
 }
 
-//attachSelectmenu(menu);
+attachSelectmenu(menu);
