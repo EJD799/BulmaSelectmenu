@@ -1,3 +1,6 @@
+// Bulma Selectmenu v1.0.0
+// Made by EJD799
+
 function openSelectmenu(el) {
     el.classList.add("is-focused");
     let card = populateMenu(el);

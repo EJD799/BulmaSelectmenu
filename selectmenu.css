@@ -1,3 +1,6 @@
+/* Bulma Selectmenu v1.0.0 */
+/* Made by EJD799          */
+
 .selectmenu_menu {
     width: max-content;
     padding-top: 16px;
@@ -26,8 +29,6 @@
     --bulma-dropdown-item-background-l: var(--bulma-scheme-main-l);
     --bulma-dropdown-item-background-l-delta: 0%;
     --bulma-dropdown-item-border-l-delta: 0%;
-    --bulma-dropdown-item-hover-background-l-delta: -5%;
-    --bulma-dropdown-item-active-background-l-delta: -10%;
 
     background-color: hsl(
         var(--bulma-dropdown-item-h),
@@ -45,17 +46,21 @@
     cursor: pointer;
 }
 
-/* Non-selected hover — NOW WORKS */
+/* Non-selected hover — FIXED */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):hover {
-    --bulma-dropdown-item-background-l-delta:
-        var(--bulma-dropdown-item-hover-background-l-delta);
+    --bulma-dropdown-item-background-l-delta: var(
+        --bulma-dropdown-item-hover-background-l-delta,
+        var(--bulma-hover-background-l-delta)
+    );
 }
 
-/* Non-selected active — NOW WORKS */
+/* Non-selected active — FIXED */
 .selectmenu_item:not(.selectmenu_item_selected):not(.selectmenu_item_disabled):active,
 .selectmenu_item.is-active:not(.selectmenu_item_selected):not(.selectmenu_item_disabled) {
-    --bulma-dropdown-item-background-l-delta:
-        var(--bulma-dropdown-item-active-background-l-delta);
+    --bulma-dropdown-item-background-l-delta: var(
+        --bulma-dropdown-item-active-background-l-delta,
+        var(--bulma-active-background-l-delta)
+    );
 }
 
 /* Selected base — subtle tint */
