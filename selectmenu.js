@@ -112,5 +112,3 @@ document.addEventListener("mousedown", (e) => {
         bulmaSelectmenu.closeAllMenus();
     }
 });
-
-bulmaSelectmenu.attachMenu(menu);
