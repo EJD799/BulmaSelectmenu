@@ -1,4 +1,4 @@
-// Bulma Selectmenu v1.0.3
+// Bulma Selectmenu v1.0.4
 // Made by EJD799
 
 let bulmaSelectmenu = {
@@ -26,10 +26,28 @@ let bulmaSelectmenu = {
 
     positionMenu: function(menu, button) {
         const rect = button.getBoundingClientRect();
-
+    
+        const top = rect.bottom + window.scrollY;
+        const left = rect.left + window.scrollX;
+    
         menu.style.position = "absolute";
-        menu.style.left = `${rect.left + window.scrollX}px`;
-        menu.style.top  = `${rect.bottom + window.scrollY}px`;
+        menu.style.left = `${left}px`;
+        menu.style.top = `${top}px`;
+    
+        // Available space below the button
+        const viewportBottom = window.innerHeight + window.scrollY;
+        const availableHeight = viewportBottom - top;
+    
+        // Read the CSS max-height (fallback to 300 if missing)
+        const cssMaxHeight = parseFloat(
+            getComputedStyle(menu).maxHeight
+        ) || 300;
+    
+        // Clamp max-height so it never overflows
+        menu.style.maxHeight = `${Math.max(
+            0,
+            Math.min(cssMaxHeight, availableHeight - 8)
+        )}px`;
     },
 
     populateMenu: function(el) {
