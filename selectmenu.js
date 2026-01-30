@@ -1,4 +1,5 @@
 function openSelectmenu(el) {
+    el.classList.add("is-focused");
     let card = populateMenu(el);
     positionMenu(card, el);
 }
@@ -40,7 +41,7 @@ function populateMenu(el) {
                 option.classList.add("selectmenu_item");
                 if (!item.disabled) {
                     option.addEventListener("click", function(e) {
-                        selectOption(el.getAttribute("id"), item.value);
+                        selectOption(el, item.value);
                     });
                 }
                 if (item.disabled) {
@@ -66,7 +67,7 @@ function populateMenu(el) {
                     option.classList.add("selectmenu_item");
                     if (!subItem.disabled) {
                         option.addEventListener("click", function(e) {
-                            selectOption(el.getAttribute("id"), subItem.value);
+                            selectOption(el, subItem.value);
                         });
                     }
                     if (subItem.disabled) {
@@ -94,6 +95,7 @@ function populateMenu(el) {
 
 function closeAllSelectmenus() {
   document.querySelectorAll(".selectmenu_menu").forEach(m => m.remove());
+  document.querySelectorAll(".select select.is-focused").forEach(m => m.classList.remove("is-focused"));
 }
 
 document.addEventListener("mousedown", (e) => {
@@ -102,5 +104,10 @@ document.addEventListener("mousedown", (e) => {
     closeAllSelectmenus();
   }
 });
+
+function selectOption(menu, selection) {
+    menu.value = selection;
+    closeAllSelectmenus();
+}
 
 attachSelectmenu(menu);
