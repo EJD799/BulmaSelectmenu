@@ -10,6 +10,7 @@
     min-width: 180px;
     overflow-y: auto;
     max-height: 300px;
+    z-index: 1000;
 }
 
 .selectmenu_menu span {
