@@ -98,3 +98,13 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+.selectmenu_search {
+    min-height: 40px;
+    min-width: 0;
+    width: calc(100% - 24px);
+
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}

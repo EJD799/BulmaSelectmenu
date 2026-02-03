@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 <link rel="stylesheet" href="https://ejd799.github.io/BulmaColoredInputs/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" />
 <link rel="stylesheet" href="selectmenu.css">
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
@@ -11,6 +12,7 @@
 </style>
 
 <h1 class="title is-1">Bulma Selectmenu</h1>
+<span>Regular:</span><br>
 <div class="select">
     <select id="menu">
         <optgroup label="Section A">
@@ -26,9 +28,28 @@
     </select>
 </div>
 <br><br>
-<button onclick="alert('Selected value: ' + menu.value)" class="button is-primary">Submit</button>
+<button onclick="alert('Selected value: ' + menu.value)" class="button is-primary">Submit 1</button>
+<br><br>
+<span>Searchable:</span><br>
+<div class="select is-searchable">
+    <select id="menu2">
+        <optgroup label="Section A">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </optgroup>
+        <optgroup label="Section B">
+            <option value="option4">Option 4</option>
+            <option value="option5" disabled>Option 5</option>
+            <option value="option6">Option 6</option>
+        </optgroup>
+    </select>
+</div>
+<br><br>
+<button onclick="alert('Selected value: ' + menu2.value)" class="button is-primary">Submit 2</button>
 
 <script src="selectmenu.js"></script>
 <script>
     bulmaSelectmenu.attachMenu(menu);
+    bulmaSelectmenu.attachMenu(menu2);
 </script>

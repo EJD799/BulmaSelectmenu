@@ -56,6 +56,26 @@ let bulmaSelectmenu = {
             card.setAttribute("id", `${el.getAttribute("id")}_menuCard`);
             card.setAttribute("class", "card selectmenu_menu");
 
+            if (el.parentElement.classList.contains("is-searchable")) {
+                let searchContainer = document.createElement("p");
+                searchContainer.setAttribute("class", "control has-icons-left");
+
+                let input = document.createElement("input");
+                input.setAttribute("class", "input selectmenu_search");
+                input.setAttribute("placeholder", "Search");
+                input.addEventListener("input", function(e) {
+                    bulmaSelectmenu.updateSearch(card, input.value);
+                });
+
+                let icon = document.createElement("span");
+                icon.innerHTML = `<i class="fas fa-magnifying-glass"></i>`;
+                icon.setAttribute("class", "icon is-small is-left");
+
+                searchContainer.appendChild(input);
+                searchContainer.appendChild(icon);
+                card.appendChild(searchContainer);
+            }
+
             let items = el.children;
             for (let i = 0; i < items.length; i++) {
                 let item = items[i];
