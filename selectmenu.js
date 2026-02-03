@@ -69,7 +69,7 @@ let bulmaSelectmenu = {
 
                 let icon = document.createElement("span");
                 icon.innerHTML = `<i class="fas fa-magnifying-glass"></i>`;
-                icon.setAttribute("class", "icon is-small is-left");
+                icon.setAttribute("class", "icon is-small is-left selectmenu_searchicon");
 
                 searchContainer.appendChild(input);
                 searchContainer.appendChild(icon);
@@ -146,6 +146,27 @@ let bulmaSelectmenu = {
         }));
         
         bulmaSelectmenu.closeAllMenus();
+    },
+
+    updateSearch: function(menu, query) {
+        let items = menu.children;
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+            if (query == "") {
+                item.classList.remove("selectmenu_hidden");
+            } else {
+                if (item.tagName == "SPAN") {
+                    item.classList.add("selectmenu_hidden");
+                }
+                if (item.tagName == "DIV") {
+                    if (item.innerHTML.includes(query)) {
+                        item.classList.remove("selectmenu_hidden");
+                    } else {
+                        item.classList.add("selectmenu_hidden");
+                    }
+                }
+            }
+        }
     }
 }
 
