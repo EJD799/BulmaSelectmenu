@@ -64,7 +64,7 @@ let bulmaSelectmenu = {
                 input.setAttribute("class", "input selectmenu_search");
                 input.setAttribute("placeholder", "Search");
                 input.addEventListener("input", function(e) {
-                    bulmaSelectmenu.updateSearch(card, input.value);
+                    bulmaSelectmenu.updateSearch(card, input.value, el.getAttribute("id"));
                 });
 
                 let icon = document.createElement("span");
@@ -122,6 +122,13 @@ let bulmaSelectmenu = {
                 }
             }
 
+            if (el.parentElement.classList.contains("is-searchable")) {
+                let noResults = document.createElement("span");
+                noResults.setAttribute("id", `${el.getAttribute("id")}_searchNoResults`);
+                noResults.innerHTML = `<i>No results</i>`;
+                card.appendChild(noResults);
+            }
+
             card.addEventListener("mousedown", e => {
                 e.stopPropagation();
             });
@@ -148,24 +155,34 @@ let bulmaSelectmenu = {
         bulmaSelectmenu.closeAllMenus();
     },
 
-    updateSearch: function(menu, query) {
+    updateSearch: function(menu, query, selectName) {
         let items = menu.children;
+        let validItems = 0;
+
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
+
             if (query == "") {
                 item.classList.remove("selectmenu_hidden");
             } else {
-                if (item.tagName == "SPAN") {
+                if (item.tagName == "SPAN" && item.classList.contains("title")) {
                     item.classList.add("selectmenu_hidden");
                 }
                 if (item.tagName == "DIV") {
-                    if (item.innerHTML.includes(query)) {
+                    if (item.innerHTML.toLowerCase().includes(query.toLowerCase())) {
                         item.classList.remove("selectmenu_hidden");
+                        validItems++;
                     } else {
                         item.classList.add("selectmenu_hidden");
                     }
                 }
             }
+        }
+
+        if ((query != "") && (validItems == 0)) {
+            document.getElementById(`${selectName}_searchNoResults`).classList.remove("selectmenu_hidden");
+        } else {
+            document.getElementById(`${selectName}_searchNoResults`).classList.add("selectmenu_hidden");
         }
     }
 }
