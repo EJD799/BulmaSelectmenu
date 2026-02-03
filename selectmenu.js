@@ -1,4 +1,4 @@
-// Bulma Selectmenu v1.0.4
+// Bulma Selectmenu v2.0.0
 // Made by EJD799
 
 let bulmaSelectmenu = {
@@ -125,7 +125,7 @@ let bulmaSelectmenu = {
             if (el.parentElement.classList.contains("is-searchable")) {
                 let noResults = document.createElement("span");
                 noResults.setAttribute("id", `${el.getAttribute("id")}_searchNoResults`);
-                noResults.innerHTML = `<i>No results</i>`;
+                noResults.innerHTML = `<center><i>No results</i></center>`;
                 card.appendChild(noResults);
             }
 

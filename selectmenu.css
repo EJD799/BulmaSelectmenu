@@ -1,4 +1,4 @@
-/* Bulma Selectmenu v1.0.3 */
+/* Bulma Selectmenu v2.0.0 */
 /* Made by EJD799          */
 
 .selectmenu_menu {
@@ -111,4 +111,8 @@
 
 .selectmenu_searchicon {
     margin-left: 13px;
+}
+
+.selectmenu_hidden {
+    display: none;
 }
